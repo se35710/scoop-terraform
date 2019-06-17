@@ -17,6 +17,7 @@
     "uninstaller": {
         "script": "Remove-Item -Recurse \"$(appdir terraform $global)\\current\\Plugins\\terraform-provider-ibm_v$version.exe\""
     },
+    "depends": "terraform/terraform",
     "checkver": {
         "github": "https://github.com/IBM-Cloud/terraform-provider-ibm"
     },

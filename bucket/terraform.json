@@ -12,9 +12,6 @@
             "hash": "e0738cb2b7462569f1bea30c53d9cf4ca0a56c5b8060cccc5ce5cd04fb5f5776"
         }
     },
-    "pre_install": [
-        "$pluginDir = New-Item -ItemType Directory \"$(appdir terraform $global)\\current\\Plugins\""
-    ],
     "bin": [
         [
             "terraform.exe",
