@@ -10,8 +10,7 @@
     },
     "installer": {
         "script": [
-            "$pluginDir = New-Item -ItemType Directory \"$(appdir terraform $global)\\current\\Plugins\"",
-            "Copy-Item \"$dir\\terraform-provider-ibm_v$version.exe\" \"$pluginDir\""
+            "Copy-Item \"$dir\\terraform-provider-ibm_v$version.exe\" \"$(appdir terraform $global)\\current\\Plugins\""
         ]
     },
     "uninstaller": {
