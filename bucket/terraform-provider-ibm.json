@@ -1,0 +1,30 @@
+{
+    "homepage": "https://ibm-cloud.github.io/tf-ibm-docs/",
+    "license": "MPL-2.0",
+    "version": "0.17.1",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/v0.17.1/windows_amd64.zip",
+            "hash": "42375dd14fd1690d15cc59e2f77efe54018dbfab9f28bb97030caf9ce202691b"
+        }
+    },
+    "installer": {
+        "script": [
+            "$pluginDir = New-Item -ItemType Directory \"$(appdir terraform $global)\\current\\Plugins\"",
+            "Copy-Item \"$dir\\terraform-provider-ibm_v$version.exe\" \"$pluginDir\""
+        ]
+    },
+    "uninstaller": {
+        "script": "Remove-Item -Recurse \"$(appdir terraform $global)\\current\\Plugins\\terraform-provider-ibm_v$version.exe\""
+    },
+    "checkver": {
+        "github": "https://github.com/IBM-Cloud/terraform-provider-ibm"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/v$version/windows_amd64.zip"
+            }
+        }
+    }
+}

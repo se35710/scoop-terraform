@@ -1,0 +1,45 @@
+{
+    "homepage": "https://www.terraform.io",
+    "license": "MPL-2.0",
+    "version": "0.12.2",
+    "architecture": {
+        "64bit": {
+            "url": "https://releases.hashicorp.com/terraform/0.12.2/terraform_0.12.2_windows_amd64.zip",
+            "hash": "ad4867345c404b21bdb39d8ee8041c2a7897b74590867bd98f12a29e4b3f0a52"
+        },
+        "32bit": {
+            "url": "https://releases.hashicorp.com/terraform/0.12.2/terraform_0.12.2_windows_386.zip",
+            "hash": "e0738cb2b7462569f1bea30c53d9cf4ca0a56c5b8060cccc5ce5cd04fb5f5776"
+        }
+    },
+    "pre_install": [
+        "$pluginDir = New-Item -ItemType Directory \"$(appdir terraform $global)\\current\\Plugins\""
+    ],
+    "bin": [
+        [
+            "terraform.exe",
+            "terraform",
+            "-plugin-dir=\"$persist_dir\\Plugins\""
+        ]
+    ],
+    "persist": [
+        "Plugins"
+    ],
+    "checkver": {
+        "url": "https://releases.hashicorp.com/terraform/",
+        "re": "terraform_([\\d.]+)</a>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://releases.hashicorp.com/terraform/$version/terraform_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://releases.hashicorp.com/terraform/$version/terraform_$version_windows_386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/terraform_$version_SHA256SUMS"
+        }
+    }
+}
