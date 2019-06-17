@@ -5,16 +5,18 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/v0.17.1/windows_amd64.zip",
-            "hash": "42375dd14fd1690d15cc59e2f77efe54018dbfab9f28bb97030caf9ce202691b"
+            "hash": "42375dd14fd1690d15cc59e2f77efe54018dbfab9f28bb97030caf9ce202691b",
+            "installer": {
+                "script": [
+                    "Copy-Item \"$dir\\terraform-provider-ibm_v$version.exe\" \"$Env:APPDATA\\terraform.d\\plugins\\windows_amd64\""
+                ]
+            },
+            "uninstaller": {
+                "script": [
+                    "Remove-Item -Recurse \"$Env:APPDATA\\terraform.d\\plugins\\windows_amd64\\terraform-provider-ibm_v$version.exe\""
+                ]
+            }
         }
-    },
-    "installer": {
-        "script": [
-            "Copy-Item \"$dir\\terraform-provider-ibm_v$version.exe\" \"$(appdir terraform $global)\\current\\Plugins\""
-        ]
-    },
-    "uninstaller": {
-        "script": "Remove-Item -Recurse \"$(appdir terraform $global)\\current\\Plugins\\terraform-provider-ibm_v$version.exe\""
     },
     "depends": "terraform/terraform",
     "checkver": {

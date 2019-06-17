@@ -1,30 +1,27 @@
 {
     "homepage": "https://www.terraform.io",
     "license": "MPL-2.0",
-    "version": "0.12.2",
+    "version": "0.11.14",
     "architecture": {
         "64bit": {
-            "url": "https://releases.hashicorp.com/terraform/0.12.2/terraform_0.12.2_windows_amd64.zip",
-            "hash": "ad4867345c404b21bdb39d8ee8041c2a7897b74590867bd98f12a29e4b3f0a52"
+            "url": "https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_windows_amd64.zip",
+            "hash": "bfec66e2ad079a1fab6101c19617a82ef79357dc1b92ddca80901bb8d5312dc0"
         },
         "32bit": {
-            "url": "https://releases.hashicorp.com/terraform/0.12.2/terraform_0.12.2_windows_386.zip",
-            "hash": "e0738cb2b7462569f1bea30c53d9cf4ca0a56c5b8060cccc5ce5cd04fb5f5776"
+            "url": "https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_windows_386.zip",
+            "hash": "f2eb847761cba796f306880288083b4c68f5ae9dd86c6cff47023eecc9895f8f"
         }
     },
-    "bin": [
-        [
-            "terraform.exe",
-            "terraform",
-            "-plugin-dir=\"$persist_dir\\Plugins\""
+    "bin": "terraform.exe",
+    "installer": {
+        "script": [
+            "New-Item -ItemType Directory -Force -Path \"$Env:APPDATA\\terraform.d\\plugins\\windows_amd64\" | Out-Null",
+            "New-Item -ItemType Directory -Force -Path \"$Env:APPDATA\\terraform.d\\plugins\\windows_386\" | Out-Null"
         ]
-    ],
-    "persist": [
-        "Plugins"
-    ],
+    },
     "checkver": {
         "url": "https://releases.hashicorp.com/terraform/",
-        "re": "terraform_([\\d.]+)</a>"
+        "re": "terraform_(0.11[\\d.]*)</a>"
     },
     "autoupdate": {
         "architecture": {
